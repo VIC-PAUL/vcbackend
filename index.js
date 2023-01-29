@@ -32,6 +32,14 @@ io.on("connection",(socket)=>{
     socket.on("answerCall",(data)=>{
         io.to(data.to).emit("callAccepted",data.signal)
     })
+
+    socket.on('hide remote cam', targetId => {
+        io.to(targetId).emit('hide cam');
+    });
+
+    socket.on('show remote cam', targetId => {
+        io.to(targetId).emit('show cam')
+    })
 })
 
 
